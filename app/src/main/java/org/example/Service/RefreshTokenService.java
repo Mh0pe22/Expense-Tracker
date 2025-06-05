@@ -7,8 +7,10 @@ import org.example.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.lang.ref.Reference;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -36,5 +38,9 @@ public class RefreshTokenService {
             throw new RuntimeException(token.getToken() + "Refresh token is expired.  Please make a new login...!");
         }
         return token;
+    }
+
+    public Optional<RefreshToken> findByToken(String token){
+        return refreshTokenRepository.findByToken(token);
     }
 }

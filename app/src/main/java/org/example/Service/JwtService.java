@@ -17,15 +17,14 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    public static final String SECRET = "1f352c073b6108d72d9810a30914dff4";
-
-    public String extractUsername(String token){
-        return extractClaim(token , Claims::getSubject);
-    }
+    public static final String SECRET = "u8DzRNoU5DQAyL7Ez2cRAb5W+UAPsqSt4eEJ7/NLZtM=         ";
 
     public <T> T extractClaim(String token , Function<Claims , T> claimResolver){
         final Claims claims = extractAllClaims(token);
         return claimResolver.apply(claims);
+    }
+    public String extractUsername(String token){
+        return extractClaim(token , Claims::getSubject);
     }
 
     public Date extractExpiration(String token){
